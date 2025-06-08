@@ -1,26 +1,81 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+// Dark theme components
 import Hero from './components/Hero.jsx';
 import Background from './components/Background.jsx';
 import NavBar from './components/NavBar.jsx';
 import About from './components/About.jsx';
+import Projects from './components/Projects.jsx';
 import Skills from './components/Skills.jsx';
 import Contact from './components/Contact.jsx';
-import Projects from './components/Projects.jsx';
+
+// Light theme components  
+import HeroLight from './components/HeroLight.jsx';
+import BackgroundLight from './components/BackgroundLight.jsx';
+import NavBarLight from './components/NavBarLight.jsx';
+import AboutLight from './components/AboutLight.jsx';
+import ProjectsLight from './components/ProjectsLight.jsx';
+import SkillsLight from './components/SkillsLight.jsx';
+import ContactLight from './components/ContactLight.jsx';
+
+// Import both CSS files
+import './index.css';
+import './index-light.css';
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  // Apply theme class to body
+  useEffect(() => {
+    document.body.className = isDarkMode ? 'dark-theme' : 'light-theme';
+  }, [isDarkMode]);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <><div className="app">
-      <NavBar />
-      <div className="sections">
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
+    <>
+      <div className="app">
+        {/* Theme Toggle Button */}
+        <button 
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+        >
+          <div className="toggle-icon">
+            {isDarkMode ? (
+              // Sun icon for switching to light mode
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="5"/>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+              </svg>
+            ) : (
+              // Moon icon for switching to dark mode
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            )}
+          </div>
+          <span className="toggle-text">
+            {isDarkMode ? 'Light' : 'Dark'}
+          </span>
+        </button>
+
+        {/* Conditional NavBar */}
+        {isDarkMode ? <NavBar /> : <NavBarLight />}
+        
+        <div className="sections">
+          {isDarkMode ? <Hero /> : <HeroLight />}
+          {isDarkMode ? <About /> : <AboutLight />}
+          {isDarkMode ? <Projects /> : <ProjectsLight />}
+          {isDarkMode ?< Skills /> : <SkillsLight />}
+          {isDarkMode ? <Contact /> : <ContactLight />}
+        </div>
       </div>
-    </div>
-      <Background />
       
+      {/* Conditional Background */}
+      {isDarkMode ? <Background /> : <BackgroundLight />}
     </>
   );
 }

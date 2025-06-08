@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './about.css';
+import './about-light.css';
 
-const About = () => {
+const AboutLight = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [animationDirection, setAnimationDirection] = useState('from-bottom');
   const [popupImage, setPopupImage] = useState(null);
@@ -58,62 +58,63 @@ const About = () => {
     <>
       <section 
         ref={aboutRef}
-        className={`about-section ${isVisible ? 'visible' : ''} ${animationDirection}`} id='about'
+        className={`about-section-light ${isVisible ? 'visible' : ''} ${animationDirection}`} 
+        id='about'
       >
-        <div className="about-container">
-          <div className="about-image-section">
-            <div className="profile-image-wrapper">
+        <div className="about-container-light">
+          <div className="about-image-section-light">
+            <div className="profile-image-wrapper-light">
               <img 
                 src="/images/me.png" 
                 alt="Profile" 
-                className="profile-image"
+                className="profile-image-light"
               />
             </div>
           </div>
           
-          <div className="about-content">
-            <h2 className="about-title">About Me</h2>
+          <div className="about-content-light">
+            <h2 className="about-title-light">About Me</h2>
             
-            <div className="personal-details">
-              <div className="detail-item">
-                <span className="label">Name:</span>
-                <span className="value">Karthik Nambiar</span>
+            <div className="personal-details-light">
+              <div className="detail-item-light">
+                <span className="label-light">Name:</span>
+                <span className="value-light">Karthik Nambiar</span>
               </div>
-              <div className="detail-item">
-                <span className="label">Date of Birth:</span>
-                <span className="value">March 1, 2005</span>
+              <div className="detail-item-light">
+                <span className="label-light">Date of Birth:</span>
+                <span className="value-light">March 1, 2005</span>
               </div>
-              <div className="detail-item">
-                <span className="label">Location:</span>
-                <span className="value">Pune, Maharashtra, India</span>
+              <div className="detail-item-light">
+                <span className="label-light">Location:</span>
+                <span className="value-light">Pune, Maharashtra, India</span>
               </div>
             </div>
 
-            <div className="education-section">
+            <div className="education-section-light">
               <h3>Education</h3>
               
-            <div className="education-item">
-                <div className="education-info">
+              <div className="education-item-light">
+                <div className="education-info-light">
                   <h4>Secondary Education</h4>
                   <p>CBSE Board</p>
                   <p>Percentage: 92.4%</p>
                 </div>
                 <button 
-                  className="cert-button"
+                  className="cert-button-light"
                   onClick={() => openPopup('/images/ssc.png')}
                 >
                   View Certificate
                 </button>
               </div>
 
-              <div className="education-item">
-                <div className="education-info">
+              <div className="education-item-light">
+                <div className="education-info-light">
                   <h4>Higher Secondary Education</h4>
                   <p>Science Stream - Physics, Chemistry, Mathematics</p>
                   <p>Percentage: 80.57%</p>
                 </div>
                 <button 
-                  className="cert-button"
+                  className="cert-button-light"
                   onClick={() => openPopup('/api/placeholder/600/800')}
                 >
                   View Certificate
@@ -121,16 +122,16 @@ const About = () => {
               </div>
             </div>
 
-            <div className="exam-section">
+            <div className="exam-section-light">
               <h3>Competitive Exams</h3>
-              <div className="education-item">
-                <div className="education-info">
+              <div className="education-item-light">
+                <div className="education-info-light">
                   <h4>CET Exam Result</h4>
                   <p>Engineering Entrance Examination</p>
                   <p>Percentile: 92.2</p>
                 </div>
                 <button 
-                  className="cert-button"
+                  className="cert-button-light"
                   onClick={() => openPopup('/api/placeholder/600/800')}
                 >
                   View Result
@@ -138,7 +139,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="skills-section-dark">
+            <div className="skills-section-light1">
               <h3>Skills & Interests</h3>
               <p>
                 Passionate about web development, UI/UX design, and creating innovative 
@@ -151,10 +152,10 @@ const About = () => {
       </section>
 
       {popupImage && (
-        <div className="popup-overlay" onClick={handlePopupClick}>
-          <div className="popup-content">
-            <img src={popupImage} alt="Certificate" className="popup-image" />
-            <button className="close-button" onClick={closePopup}>×</button>
+        <div className="popup-overlay-light" onClick={handlePopupClick}>
+          <div className="popup-content-light">
+            <img src={popupImage} alt="Certificate" className="popup-image-light" />
+            <button className="close-button-light" onClick={closePopup}>×</button>
           </div>
         </div>
       )}
@@ -162,4 +163,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutLight;

@@ -6,6 +6,9 @@
   transform: translateY(60px);
   transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   perspective: 1000px;
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  margin: 20px;
 }
 
 /* Visibility and animation states */
@@ -107,6 +110,7 @@
   opacity: 1;
 }
 
+
 /* Content Section */
 .about-content {
   animation: fadeInRight 1.5s ease-out 0.3s both;
@@ -153,11 +157,19 @@
   margin-bottom: 15px;
   padding: 10px 0;
   border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
 .detail-item:last-child {
   border-bottom: none;
   margin-bottom: 0;
+}
+
+.detail-item:hover {
+  background: rgba(255, 107, 107, 0.05);
+  border-radius: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .label {
@@ -173,13 +185,13 @@
 /* Education and Exam Sections */
 .education-section,
 .exam-section,
-.skills-section {
+.skills-section-dark {
   margin-bottom: 40px;
 }
 
 .education-section h3,
 .exam-section h3,
-.skills-section h3 {
+.skills-section-dark h3 {
   font-size: 1.8rem;
   margin-bottom: 25px;
   color: #00ffff;
@@ -196,6 +208,8 @@
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .education-item:hover {
@@ -215,6 +229,8 @@
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.95rem;
 }
+
+
 
 /* Certificate Buttons */
 .cert-button {
@@ -239,11 +255,18 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.4), transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
   transition: left 0.5s ease;
 }
 
 .cert-button:hover::before {
   left: 100%;
+}
+
+.cert-button-light:hover::after {
+  width: 200px;
+  height: 200px;
 }
 
 .cert-button:hover {
@@ -253,15 +276,44 @@
 }
 
 /* Skills Section */
-.skills-section p {
+.skills-section-dark p {
   font-size: 1.1rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.9);
-  padding: 20px;
-  background: rgba(0, 255, 255, 0.02);
-  border-radius: 12px;
-  border-left: 4px solid #00ffff;
+  line-height: 1.8;
+  color: #ffffff;
+  padding: 25px;
+  background: rgba(0, 255, 255, 0.6); /* Increased opacity from 0.08 to 0.15 */
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border-left: 5px solid #00ffff;
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.15); /* Increased shadow opacity */
+  font-weight: 500;
+  position: relative;
 }
+
+.skills-section-dark p::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, rgba(0, 255, 255, 0.05), rgba(0, 255, 255, 0.1));
+  border-radius: 16px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skills-section-dark p:hover::before {
+  opacity: 1;
+}
+
+.skills-section-dark p:hover {
+  background: rgba(0, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(0, 255, 255, 0.2);
+}
+
 
 /* Popup Styles */
 .popup-overlay {
@@ -394,11 +446,15 @@
   
   .education-item {
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
     text-align: left;
   }
   
   .cert-button {
     width: 100%;
+  }
+  .popup-content {
+    max-width: 90%;
+    max-height: 80%;
   }
 }

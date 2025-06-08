@@ -19,6 +19,7 @@ section.hero {
   font-size: 3rem;
   margin-bottom: 1rem;
   font-weight: 700;
+  color: white;
 }
 
 .hero h2 {
@@ -84,11 +85,6 @@ section.hero {
 
 .nav-item:hover .tooltip {
   opacity: 1;
-}
-
-body {
-  margin: 0;
-  font-family: sans-serif;
 }
 
 .app {
