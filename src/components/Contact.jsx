@@ -113,7 +113,7 @@ const Contact = () => {
     {
       name: 'LinkedIn',
       url: 'https://www.linkedin.com/in/karthik-nambiar-739957289/',
-      icon: 'src/assets/icons/linkedin.svg'
+      icon: 'images/linkedin.svg'
     },
     {
       name: 'X',
