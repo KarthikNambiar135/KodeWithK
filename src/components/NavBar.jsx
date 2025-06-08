@@ -42,7 +42,7 @@ function NavBar() {
           className={`nav-item ${active === id ? 'active' : ''}`}
           onClick={() => handleScroll(id)}
         >
-          <img src={`/src/assets/icons/${icon}`} alt={label} />
+          <img src={`../assets/icons/${icon}`} alt={label} />
           <span className="tooltip">{label}</span>
         </div>
       ))}

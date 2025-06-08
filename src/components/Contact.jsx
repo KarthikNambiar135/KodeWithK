@@ -108,22 +108,22 @@ const Contact = () => {
     {
       name: 'GitHub',
       url: 'https://github.com/KarthikNambiar135',
-      icon: '/src/assets/icons/github.svg'
+      icon: '../assets/icons/icons/github.svg'
     },
     {
       name: 'LinkedIn',
       url: 'https://www.linkedin.com/in/karthik-nambiar-739957289/',
-      icon: '/src/assets/icons/linkedin.svg'
+      icon: '../assets/icons//icons/linkedin.svg'
     },
     {
       name: 'X',
       url: 'https://x.com/KarthikNambia15',
-      icon: '/src/assets/icons/X.svg'
+      icon: '../assets/icons//icons/X.svg'
     },
     {
       name: 'Instagram',
       url: 'https://www.instagram.com/karrthikk._.1/',
-      icon: '/src/assets/icons/instagram.svg'
+      icon: '../assets/icons//icons/instagram.svg'
     }
   ];
 
