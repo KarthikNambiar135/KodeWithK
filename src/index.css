@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000; 
+  color: #fff;
+}
+
+section.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.hero h2 {
+  font-size: 2rem;
+}
+
+.hero .typed-text {
+  color: #00ffff;
+  font-weight: 700;
+}
+
+.navbar {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 999;
+}
+
+.nav-item {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.nav-item:hover {
+  background: white;
+}
+
+.nav-item.active {
+  background: cyan;
+}
+
+.nav-item img {
+  width: 24px;
+  height: 24px;
+}
+
+.tooltip {
+  position: absolute;
+  left: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #111;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.nav-item:hover .tooltip {
+  opacity: 1;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.app {
+  display: flex;
+}
+
+.sections {
+  margin-left: 100px;
+  flex: 1;
+  scroll-behavior: smooth;
+}
+
+.section {
+  min-height: 100vh;
+  padding: 4rem;
+  scroll-margin-top: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
