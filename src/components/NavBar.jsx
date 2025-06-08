@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../index.css';
 
 const navItems = [
-  { id: 'home', label: 'Homew', icon: 'home.png' },
+  { id: 'home', label: 'Home', icon: 'home.png' },
   { id: 'about', label: 'About', icon: 'about.png' },
   { id: 'projects', label: 'Projects', icon: 'projects.png' },
   { id: 'skills', label: 'Skills', icon: 'skills.png' },
@@ -42,7 +42,7 @@ function NavBar() {
           className={`nav-item ${active === id ? 'active' : ''}`}
           onClick={() => handleScroll(id)}
         >
-          <img src={`../assets/icons/${icon}`} alt={label} />
+          <img src={`images/${icon}`} alt={label} />
           <span className="tooltip">{label}</span>
         </div>
       ))}

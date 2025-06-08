@@ -108,7 +108,7 @@ const Contact = () => {
     {
       name: 'GitHub',
       url: 'https://github.com/KarthikNambiar135',
-      icon: 'src/assets/icons/github.svg'
+      icon: 'images/github.svg'
     },
     {
       name: 'LinkedIn',
@@ -118,12 +118,12 @@ const Contact = () => {
     {
       name: 'X',
       url: 'https://x.com/KarthikNambia15',
-      icon: 'src/assets/icons/X.svg'
+      icon: 'images/X.svg'
     },
     {
       name: 'Instagram',
       url: 'https://www.instagram.com/karrthikk._.1/',
-      icon: 'src/assets/icons/instagram.svg'
+      icon: 'images/instagram.svg'
     }
   ];
 
