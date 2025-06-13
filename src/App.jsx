@@ -25,7 +25,6 @@ import './index-light.css';
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
 
-  // Apply theme class to body
   useEffect(() => {
     document.body.className = isDarkMode ? 'dark-theme' : 'light-theme';
   }, [isDarkMode]);

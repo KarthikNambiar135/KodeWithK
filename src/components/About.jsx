@@ -138,6 +138,21 @@ const About = () => {
               </div>
             </div>
 
+            <div className="exam-section">
+              <h3>Others</h3>
+              <div className="education-item">
+                <div className="education-info">
+                  <h4>Resume</h4>
+                </div>
+                <button 
+                  className="cert-button"
+                 onClick={() => window.open('docs/Karthik_Nambiar_Resume.pdf', '_blank')}
+                > 
+                  View Resume
+                </button>
+              </div>
+            </div>
+
             <div className="skills-section-dark">
               <h3>Skills & Interests</h3>
               <p>
@@ -153,7 +168,7 @@ const About = () => {
       {popupImage && (
         <div className="popup-overlay" onClick={handlePopupClick}>
           <div className="popup-content">
-            <img src={popupImage} alt="Certificate" className="popup-image" />
+            <img src={popupImage} alt="This image is not currently available right now. Sorry for the incovenience." className="popup-image" />
             <button className="close-button" onClick={closePopup}>×</button>
           </div>
         </div>

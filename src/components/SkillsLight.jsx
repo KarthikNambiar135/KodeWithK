@@ -34,7 +34,7 @@ const SkillsLight = () => {
       const windowHeight = window.innerHeight;
       const currentScrollY = window.scrollY;
       
-      // Check if element is in viewport
+      // Checking if element is in viewport
       const isInViewport = rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.2;
       
       // Determine scroll direction and animation
