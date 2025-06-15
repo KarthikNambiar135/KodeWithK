@@ -11,7 +11,7 @@ const ProjectsLight = () => {
   const projects = [
     {
       id: 1,
-      name: "KodeWithMusic",
+      name: "KodeWithMusic(BETA)",
       image: "/images/kodewithmusic.png",
       description: "A modern, full-stack music streaming application built with React and Django, featuring a stunning glassmorphism UI and comprehensive music management capabilities.",
       technologies: ["Vite-React", "JavaScript", "Django", "Python", "CSS3"],
@@ -20,12 +20,21 @@ const ProjectsLight = () => {
     },
     {
       id: 2,
-      name: "PoopyBot",
+      name: "PoopyBot(Live Demo Unavailable)",
       image: "/images/poopybot.jpg",
       description: "A chaotic, energetic AI chatbot with personality-based responses and a poop-obsessed sense of humor! Built with React frontend and Flask backend, powered by Ollama's Mistral model.",
       technologies: ["Vite-ReactJS", "Flask-Python", "Ollama's Mistral", "CSS3", "Flask-CORS"],
       githubUrl: "https://github.com/KarthikNambiar135/poopybot.git",
       liveUrl: "https://github.com/KarthikNambiar135/poopybot.git"
+    },
+    { 
+      id: 3,
+      name: "KodeWithK - Project Gallery",
+      image: "/images/project-gallery.png",
+      description: "A sleek and animated personal project gallery showcasing creative React components, transitions, designed to be fun, interactive, and a reflection of my chaotic coding energy.",
+      technologies: ["ReactJS", "Vite", "Framer Motion", "TailwindCSS", "Lucide Icons"],
+      githubUrl: "https://github.com/KarthikNambiar135/MyProjectGallery",
+      liveUrl: "https://my-project-gallery-nine.vercel.app/"
     },
   ];
 

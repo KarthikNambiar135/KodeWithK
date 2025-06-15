@@ -139,6 +139,21 @@ const AboutLight = () => {
               </div>
             </div>
 
+            <div className="exam-section">
+              <h3>Others</h3>
+              <div className="education-item">
+                <div className="education-info">
+                  <h4>Resume</h4>
+                </div>
+                <button 
+                  className="cert-button"
+                 onClick={() => window.open('docs/Karthik_Nambiar_Resume.pdf', '_blank')}
+                > 
+                  View Resume
+                </button>
+              </div>
+            </div>
+
             <div className="skills-section-light1">
               <h3>Skills & Interests</h3>
               <p>
