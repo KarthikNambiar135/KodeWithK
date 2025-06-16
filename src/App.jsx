@@ -24,6 +24,64 @@ import './index-light.css';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    const certdata = [
+      // Page 1 - Education
+      {
+        title: "Education",
+        certificates: [
+          {
+            title: "Secondary Education",
+            subtitle: "CBSE Board",
+            details: "Percentage: 92.4%",
+            image: "/images/ssc.png",
+            buttonText: "View Certificate"
+          },
+          {
+            title: "Higher Secondary Education",
+            subtitle: "Science Stream - Physics, Chemistry, Mathematics",
+            details: "Percentage: 80.57%",
+            image: "/images/12th.png",
+            buttonText: "View Certificate"
+          }
+        ]
+      },
+      // Page 2 - Competitive Exams
+      {
+        title: "Competitive Exams",
+        certificates: [
+          {
+            title: "CET Exam Result",
+            subtitle: "Engineering Entrance Examination",
+            details: "Percentile: 92.2",
+            image: "/api/placeholder/600/800",
+            buttonText: "View Result"
+          },
+        ]
+      },
+      // Page 3 - Certifications
+      {
+        title: "Certifications",
+        certificates: [
+          {
+            title: "React Developer Certification",
+            subtitle: "Frontend Development",
+            details: "Completed: 2024",
+            image: "/api/placeholder/600/800",
+            buttonText: "View Certificate"
+          },
+          {
+            title: "JavaScript Fundamentals",
+            subtitle: "Programming Language",
+            details: "Completed: 2024",
+            image: "/api/placeholder/600/800",
+            buttonText: "View Certificate"
+          }
+        ]
+      },
+  
+    ];
 
   useEffect(() => {
     document.body.className = isDarkMode ? 'dark-theme' : 'light-theme';
@@ -37,6 +95,7 @@ function App() {
     <>
       <div className="app">
         {/* Theme Toggle Button */}
+        {!isPopupOpen && (
         <button 
           className="theme-toggle"
           onClick={toggleTheme}
@@ -44,7 +103,7 @@ function App() {
         >
           <div className="toggle-icon">
             {isDarkMode ? (
-              // Sun icon for switching to light mode
+             // Sun icon for switching to light mode
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="12" r="5"/>
                 <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
@@ -60,14 +119,14 @@ function App() {
             {isDarkMode ? 'Light' : 'Dark'}
           </span>
         </button>
-
+      )}
         {/* Conditional NavBar */}
         {isDarkMode ? <NavBar /> : <NavBarLight />}
         
         <div className="sections">
           {isDarkMode ? <Hero /> : <HeroLight />}
-          {isDarkMode ? <About /> : <AboutLight />}
-          {isDarkMode ? <Projects /> : <ProjectsLight />}
+          {isDarkMode ? <About certificatesData = {certdata} setIsPopupOpen={setIsPopupOpen}/> : <AboutLight certificatesData = {certdata} setIsPopupOpen={setIsPopupOpen}/>}
+          {isDarkMode ? <Projects setIsPopupOpen={setIsPopupOpen}/> : <ProjectsLight setIsPopupOpen={setIsPopupOpen}/>}
           {isDarkMode ?< Skills /> : <SkillsLight />}
           {isDarkMode ? <Contact /> : <ContactLight />}
         </div>

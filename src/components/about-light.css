@@ -49,7 +49,8 @@
 .about-image-section-light {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   padding-top: 40px;
   position: sticky;
   top: 100px;
@@ -323,24 +324,9 @@
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
   border-radius: 16px;
-  border-left: 5px solid #ff6b6b;
   box-shadow: 0 8px 25px rgba(255, 107, 107, 0.08);
   font-weight: 500;
   position: relative;
-}
-
-.skills-section-light1 p::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, #ff6b6b, #ffb347, #ff6b6b);
-  border-radius: 16px;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
 }
 
 /* Popup Styles */
@@ -350,13 +336,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   animation: fadeInLight 0.4s ease;
+  overflow-y: auto;
 }
 
 .popup-content-light {
@@ -369,6 +356,8 @@
 .popup-image-light {
   width: 100%;
   height: auto;
+  object-fit: contain;
+  max-height: 100%;
   border-radius: 20px;
   box-shadow: 
     0 0 0 4px rgba(255, 107, 107, 0.3),
@@ -486,5 +475,178 @@
   .popup-content-light {
     max-width: 90%;
     max-height: 80%;
+  }
+}
+
+/* Certificates Section with Pagination - Light Theme */
+.certificates-section-light {
+  margin-bottom: 40px;
+}
+
+.certificates-header-light {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.certificates-header-light h3 {
+  font-size: 1.8rem;
+  color: #ff6b6b;
+  position: relative;
+  margin: 0;
+  font-weight: 600;
+}
+
+.pagination-controls-light {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-button-light {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ff6b6b;
+  background: rgba(255, 255, 255, 0.8);
+  color: #ff6b6b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 20px;
+  font-weight: bold;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.1);
+}
+
+.nav-button-light:hover {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 179, 71, 0.1));
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.25);
+  border-color: #ffb347;
+  color: #e74c3c;
+}
+
+.nav-button-light:active {
+  transform: scale(0.95);
+}
+
+.page-indicators-light {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.page-dot-light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 107, 107, 0.4);
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  backdrop-filter: blur(5px);
+}
+
+.page-dot-light:hover {
+  border-color: #ff6b6b;
+  transform: scale(1.2);
+  background: rgba(255, 107, 107, 0.1);
+}
+
+.page-dot-light.active {
+  background: linear-gradient(135deg, #ff6b6b, #ffb347);
+  border-color: #ff6b6b;
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.4);
+}
+
+.page-dot-light.active::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 50%;
+  animation: pulseLight 2s infinite;
+}
+
+.certificates-content-light {
+  min-height: 200px;
+  animation: fadeInContentLight 0.5s ease-in-out;
+}
+
+@keyframes pulseLight {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInContentLight {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced hover effects for light theme */
+.nav-button-light::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 107, 107, 0.1), transparent);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-button-light:hover::before {
+  opacity: 1;
+}
+
+/* Responsive Design for Pagination - Light Theme */
+@media (max-width: 768px) {
+  .certificates-header-light {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .pagination-controls-light {
+    justify-content: center;
+  }
+
+  .nav-button-light {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .page-dot-light {
+    width: 10px;
+    height: 10px;
   }
 }

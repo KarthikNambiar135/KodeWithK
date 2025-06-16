@@ -48,12 +48,17 @@
 .about-image-section {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   padding-top: 40px;
   position: sticky;
   top: 100px;
   height: fit-content;
   z-index: 10;
+}
+
+.resume {
+  margin: 20px;
 }
 
 .profile-image-wrapper {
@@ -281,39 +286,13 @@
   line-height: 1.8;
   color: #ffffff;
   padding: 25px;
-  background: rgba(0, 255, 255, 0.6); /* Increased opacity from 0.08 to 0.15 */
+  background: rgba(0, 255, 255, 0.1); 
   backdrop-filter: blur(10px);
   border-radius: 16px;
-  border-left: 5px solid #00ffff;
-  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.15); /* Increased shadow opacity */
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.15); 
   font-weight: 500;
   position: relative;
 }
-
-.skills-section-dark p::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, rgba(0, 255, 255, 0.05), rgba(0, 255, 255, 0.1));
-  border-radius: 16px;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.skills-section-dark p:hover::before {
-  opacity: 1;
-}
-
-.skills-section-dark p:hover {
-  background: rgba(0, 255, 255, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 35px rgba(0, 255, 255, 0.2);
-}
-
 
 /* Popup Styles */
 .popup-overlay {
@@ -322,13 +301,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background: transparent;
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   animation: fadeIn 0.3s ease;
+  overflow-y: auto; 
 }
 
 .popup-content {
@@ -341,13 +321,14 @@
 .popup-image {
   width: 100%;
   height: auto;
+  object-fit: contain;
+  max-height: 100%;
   border-radius: 15px;
   box-shadow: 
     0 0 0 3px #00ffff,
     0 0 20px rgba(0, 255, 255, 0.8),
     0 0 40px rgba(0, 255, 255, 0.4);
   position: relative;
-  overflow: hidden;
 }
 
 .popup-image::before {
@@ -456,5 +437,153 @@
   .popup-content {
     max-width: 90%;
     max-height: 80%;
+  }
+}
+
+/* Certificates Section with Pagination */
+.certificates-section {
+  margin-bottom: 40px;
+}
+
+.certificates-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.certificates-header h3 {
+  font-size: 1.8rem;
+  color: #00ffff;
+  position: relative;
+  margin: 0;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-button {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #00ffff;
+  background: transparent;
+  color: #00ffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-button:hover {
+  background: rgba(0, 255, 255, 0.1);
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+.nav-button:active {
+  transform: scale(0.95);
+}
+
+.page-indicators {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.page-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 255, 255, 0.4);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.page-dot:hover {
+  border-color: #00ffff;
+  transform: scale(1.2);
+}
+
+.page-dot.active {
+  background: #00ffff;
+  border-color: #00ffff;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+}
+
+.page-dot.active::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.certificates-content {
+  min-height: 200px;
+  animation: fadeInContent 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design for Pagination */
+@media (max-width: 768px) {
+  .certificates-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .pagination-controls {
+    justify-content: center;
+  }
+
+  .nav-button {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .page-dot {
+    width: 10px;
+    height: 10px;
   }
 }

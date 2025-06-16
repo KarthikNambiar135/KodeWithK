@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './projects.css';
 
-const Projects = () => {
+const Projects = ({setIsPopupOpen}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [animationDirection, setAnimationDirection] = useState('from-bottom');
   const [selectedProject, setSelectedProject] = useState(null);
@@ -67,11 +67,13 @@ const Projects = () => {
   const openProjectModal = (project) => {
     setSelectedProject(project);
     document.body.style.overflow = 'hidden';
+     setIsPopupOpen(true);
   };
 
   const closeProjectModal = () => {
     setSelectedProject(null);
     document.body.style.overflow = 'auto';
+     setIsPopupOpen(false);
   };
 
   const handleModalClick = (e) => {

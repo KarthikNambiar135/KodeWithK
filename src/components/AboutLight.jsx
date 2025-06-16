@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './about-light.css';
 
-const AboutLight = () => {
+const AboutLight = ({certificatesData, setIsPopupOpen}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [animationDirection, setAnimationDirection] = useState('from-bottom');
   const [popupImage, setPopupImage] = useState(null);
   const aboutRef = useRef(null);
   const lastScrollY = useRef(0);
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,11 +42,13 @@ const AboutLight = () => {
   const openPopup = (imageSrc) => {
     setPopupImage(imageSrc);
     document.body.style.overflow = 'hidden';
+    setIsPopupOpen(true);
   };
 
   const closePopup = () => {
     setPopupImage(null);
     document.body.style.overflow = 'auto';
+    setIsPopupOpen(falses);
   };
 
   const handlePopupClick = (e) => {
@@ -53,6 +56,35 @@ const AboutLight = () => {
       closePopup();
     }
   };
+
+   const intervalRef = useRef(null);
+  
+    useEffect(() => {
+      startAutoScroll();
+      return () => clearInterval(intervalRef.current);
+    }, []);
+  
+    const startAutoScroll = () => {
+      clearInterval(intervalRef.current);
+      intervalRef.current = setInterval(() => {
+        setCurrentPage(prev => (prev + 1) % certificatesData.length);
+      }, 4000);
+    };
+  
+    const nextPage = () => {
+      setCurrentPage((prev) => (prev + 1) % certificatesData.length);
+      startAutoScroll();
+    };
+  
+    const prevPage = () => {
+      setCurrentPage((prev) => (prev - 1 + certificatesData.length) % certificatesData.length);
+      startAutoScroll();
+    };
+  
+    const goToPage = (pageIndex) => {
+      setCurrentPage(pageIndex);
+      startAutoScroll();
+    };
 
   return (
     <>
@@ -69,6 +101,14 @@ const AboutLight = () => {
                 alt="Profile" 
                 className="profile-image-light"
               />
+            </div>
+            <div className='resume'>
+              <button 
+                  className="cert-button-light"
+                 onClick={() => window.open('docs/Karthik_Nambiar_Resume.pdf', '_blank')}
+                > 
+                  View Resume
+                </button>
             </div>
           </div>
           
@@ -90,67 +130,50 @@ const AboutLight = () => {
               </div>
             </div>
 
-            <div className="education-section-light">
-              <h3>Education</h3>
-              
-              <div className="education-item-light">
-                <div className="education-info-light">
-                  <h4>Secondary Education</h4>
-                  <p>CBSE Board</p>
-                  <p>Percentage: 92.4%</p>
+            <div className="certificates-section-light">
+              <div className="certificates-header-light">
+                <h3>{certificatesData[currentPage].title}</h3>
+                <div className="pagination-controls-light">
+                  <button className="nav-button-light" onClick={prevPage}>
+                    <span>‹</span>
+                  </button>
+                  <div className="page-indicators-light">
+                    {certificatesData.map((_, index) => (
+                      <button
+                        key={index}
+                        className={`page-dot-light ${index === currentPage ? 'active' : ''}`}
+                        onClick={() => goToPage(index)}
+                      />
+                    ))}
+                  </div>
+                  <button className="nav-button-light" onClick={nextPage}>
+                    <span>›</span>
+                  </button>
                 </div>
-                <button 
-                  className="cert-button-light"
-                  onClick={() => openPopup('/images/ssc.png')}
-                >
-                  View Certificate
-                </button>
               </div>
 
-              <div className="education-item-light">
-                <div className="education-info-light">
-                  <h4>Higher Secondary Education</h4>
-                  <p>Science Stream - Physics, Chemistry, Mathematics</p>
-                  <p>Percentage: 80.57%</p>
-                </div>
-                <button 
-                  className="cert-button-light"
-                  onClick={() => openPopup('/api/placeholder/600/800')}
-                >
-                  View Certificate
-                </button>
-              </div>
-            </div>
-
-            <div className="exam-section-light">
-              <h3>Competitive Exams</h3>
-              <div className="education-item-light">
-                <div className="education-info-light">
-                  <h4>CET Exam Result</h4>
-                  <p>Engineering Entrance Examination</p>
-                  <p>Percentile: 92.2</p>
-                </div>
-                <button 
-                  className="cert-button-light"
-                  onClick={() => openPopup('/api/placeholder/600/800')}
-                >
-                  View Result
-                </button>
-              </div>
-            </div>
-
-            <div className="exam-section">
-              <h3>Others</h3>
-              <div className="education-item">
-                <div className="education-info">
-                  <h4>Resume</h4>
-                </div>
-                <button 
-                  className="cert-button"
-                 onClick={() => window.open('docs/Karthik_Nambiar_Resume.pdf', '_blank')}
-                > 
-                  View Resume
-                </button>
+              <div className="certificates-content-light">
+                {certificatesData[currentPage].certificates.map((cert, index) => (
+                  <div key={index} className="education-item-light">
+                    <div className="education-info-light">
+                      <h4>{cert.title}</h4>
+                      {cert.subtitle && <p>{cert.subtitle}</p>}
+                      {cert.details && <p>{cert.details}</p>}
+                    </div>
+                    <button 
+                      className="cert-button-light"
+                      onClick={() => {
+                        if (cert.action) {
+                          cert.action();
+                        } else if (cert.image) {
+                          openPopup(cert.image);
+                        }
+                      }}
+                    >
+                      {cert.buttonText}
+                    </button>
+                  </div>
+                ))}
               </div>
             </div>
 
