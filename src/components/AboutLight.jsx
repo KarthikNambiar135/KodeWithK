@@ -48,7 +48,7 @@ const AboutLight = ({certificatesData, setIsPopupOpen}) => {
   const closePopup = () => {
     setPopupImage(null);
     document.body.style.overflow = 'auto';
-    setIsPopupOpen(falses);
+    setIsPopupOpen(false);
   };
 
   const handlePopupClick = (e) => {

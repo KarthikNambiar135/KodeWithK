@@ -27,7 +27,32 @@ function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     const certdata = [
-      // Page 1 - Education
+      {
+        title: "Certifications",
+        certificates: [
+          {
+            title: "Web Development Certification",
+            subtitle: "NSDC",
+            details: "Completed: 2025",
+            image: "/images/webdev.png",
+            buttonText: "View Certificate"
+          },
+          {
+            title: "Agile Project Management",
+            subtitle: "Google",
+            details: "Completed: 2025",
+            image: "/images/agile.png",
+            buttonText: "View Certificate"
+          },
+          {
+            title: "Introduction to Openshift Applications",
+            subtitle: "Redhat",
+            details: "Completed: 2025",
+            image: "/images/openshift.png",
+            buttonText: "View Certificate"
+          },
+        ]
+      },
       {
         title: "Education",
         certificates: [
@@ -47,7 +72,6 @@ function App() {
           }
         ]
       },
-      // Page 2 - Competitive Exams
       {
         title: "Competitive Exams",
         certificates: [
@@ -59,28 +83,7 @@ function App() {
             buttonText: "View Result"
           },
         ]
-      },
-      // Page 3 - Certifications
-      {
-        title: "Certifications",
-        certificates: [
-          {
-            title: "React Developer Certification",
-            subtitle: "Frontend Development",
-            details: "Completed: 2024",
-            image: "/api/placeholder/600/800",
-            buttonText: "View Certificate"
-          },
-          {
-            title: "JavaScript Fundamentals",
-            subtitle: "Programming Language",
-            details: "Completed: 2024",
-            image: "/api/placeholder/600/800",
-            buttonText: "View Certificate"
-          }
-        ]
-      },
-  
+      }, 
     ];
 
   useEffect(() => {
