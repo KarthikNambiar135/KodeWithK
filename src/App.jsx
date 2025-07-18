@@ -79,7 +79,7 @@ function App() {
             title: "CET Exam Result",
             subtitle: "Engineering Entrance Examination",
             details: "Percentile: 92.2",
-            image: "/api/placeholder/600/800",
+            image: "/images/cet.png",
             buttonText: "View Result"
           },
         ]
