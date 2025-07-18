@@ -21,7 +21,7 @@ const Projects = ({setIsPopupOpen}) => {
     {
       id: 2,
       name: "PoopyBot(Live Demo Unavailable)",
-      image: "/images/poopybot.jpg",
+      image: "/images/poopybot.png",
       description: "A chaotic, energetic AI chatbot with personality-based responses and a poop-obsessed sense of humor! Built with React frontend and Flask backend, powered by Ollama's Mistral model.",
       technologies: ["Vite-ReactJS", "Flask-Python", "Ollama's Mistral", "CSS3", "Flask-CORS"],
       githubUrl: "https://github.com/KarthikNambiar135/poopybot.git",
